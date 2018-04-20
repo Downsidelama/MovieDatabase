@@ -1,5 +1,6 @@
 package view.listing;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 
@@ -8,8 +9,11 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
+import java.awt.PopupMenu;
+
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
@@ -28,6 +32,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.awt.event.ActionEvent;
 
 public class AddEdit {
@@ -110,7 +116,7 @@ public class AddEdit {
 		
 		JLabel lblMedia = new JLabel("Media");
 		
-		JComboBox mediaComboBox = new JComboBox();
+		JComboBox<String> mediaComboBox = new JComboBox<String>();
 		mediaComboBox.addItem("DVD");
 		mediaComboBox.addItem("VHS");
 		mediaComboBox.addItem("Blu-Ray");
@@ -121,7 +127,6 @@ public class AddEdit {
 		imagePathTextField = new JTextField();
 		imagePathTextField.setEnabled(false);
 		imagePathTextField.setColumns(10);
-		File imageFile = null;
 		JButton browseButton = new JButton("Browse");
 		browseButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -150,13 +155,30 @@ public class AddEdit {
 			}
 		});
 		
-		JComboBox genuineComboBox = new JComboBox();
+		JComboBox<String> genuineComboBox = new JComboBox<String>();
 		genuineComboBox.addItem("Yes");
 		genuineComboBox.addItem("No");
 		
 		JLabel lblGenuine = new JLabel("Genuine");
 		
 		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(testInput(title) & testInput(director) & testInput(mainActors) & testInput(imagePathTextField)) {
+					File img = new File(imagePathTextField.getText());
+					if(img.exists() && img.canRead()) {
+						try {
+							MessageDigest md5 = MessageDigest.getInstance("MD5");
+							copyFileUsingStream(img, new File("img/" + md5.));
+						} catch (NoSuchAlgorithmException e) {
+							e.printStackTrace();
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Selected file doesn't exists or couldn't be read.");
+					}
+				}
+			}
+		});
 		
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
@@ -171,10 +193,14 @@ public class AddEdit {
 		btnCopy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				File file = new File(imagePathTextField.getText());
-				try {
-					copyFileUsingStream(file, new File("img/" + file.getName()));
-				} catch (IOException e1) {
-					e1.printStackTrace();
+				if(file.exists()) {
+					try {
+						copyFileUsingStream(file, new File("img/" + file.getName()));
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Couldn't find the file.");
 				}
 			}
 		});
@@ -278,5 +304,15 @@ public class AddEdit {
 	        is.close();
 	        os.close();
 	    }
+	}
+	
+	private boolean testInput(JTextField t) {
+		if(t.getText() != null && t.getText().length() > 0 && t.getText().length() <= 255) {
+			t.setBackground(Color.WHITE);
+			return true;
+		} else {
+			t.setBackground(Color.RED);
+			return false;
+		}
 	}
 }
