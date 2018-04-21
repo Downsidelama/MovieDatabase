@@ -11,8 +11,6 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.Font;
-import java.awt.PopupMenu;
 
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
@@ -26,17 +24,12 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageFilter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.awt.event.ActionEvent;
 
 public class AddEdit {

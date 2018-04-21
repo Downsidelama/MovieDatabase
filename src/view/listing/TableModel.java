@@ -14,6 +14,7 @@ import engine.entity.Row;
  * @since 2018-04-14
  */
 public class TableModel extends AbstractTableModel {
+	private static final long serialVersionUID = 9047572394630079603L;
 	private String[] columnNames = {"Title", "Director", "Main Actors", "Release year", "Duration", "Media", "Genuine", "Rented", "Times Rented"};
 	Database db = Database.getInstance();
 	private ArrayList<Row> data = db.getAllMovies();
