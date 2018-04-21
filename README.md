@@ -1,1 +1,3 @@
-# Progtech2_bead
+# MovieDatabase
+
+Assignment for Programming Technologies 2. class.
