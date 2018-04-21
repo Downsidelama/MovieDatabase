@@ -19,6 +19,9 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileFilter;
+
+import org.apache.commons.io.FilenameUtils;
+
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JButton;
@@ -168,9 +171,8 @@ public class AddEdit {
 					File img = new File(imagePathTextField.getText());
 					if(img.exists() && img.canRead()) {
 						try {
-							MessageDigest md5 = MessageDigest.getInstance("MD5");
-							copyFileUsingStream(img, new File("img/" + md5.));
-						} catch (NoSuchAlgorithmException e) {
+							copyFileUsingStream(img, new File("img/" + Long.toString(System.currentTimeMillis()) + "." + FilenameUtils.getExtension(img.getName())));
+						} catch (IOException e) {
 							e.printStackTrace();
 						}
 					} else {
@@ -195,7 +197,8 @@ public class AddEdit {
 				File file = new File(imagePathTextField.getText());
 				if(file.exists()) {
 					try {
-						copyFileUsingStream(file, new File("img/" + file.getName()));
+						copyFileUsingStream(file, new File("img/" + Long.toString(System.currentTimeMillis()) + "." + FilenameUtils.getExtension(file.getName())));
+						//copyFileUsingStream(file, new File("img/" + file.getName()));
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
