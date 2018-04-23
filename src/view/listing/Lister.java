@@ -1,5 +1,6 @@
 package view.listing;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -12,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTable;
 
 import engine.Database;
+import engine.entity.Row;
 
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -22,9 +24,12 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -51,9 +56,7 @@ public class Lister {
 	private JButton btnSearch;
 	private JButton btnPnik;
 	private JButton btnRentals;
-	private JTextField textField;
 	private Database db;
-	private JButton btnDummydata;
 	private TableModel tm;
 
 	/**
@@ -83,6 +86,7 @@ public class Lister {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		tm = new TableModel();
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (UnsupportedLookAndFeelException e) {
@@ -90,55 +94,77 @@ public class Lister {
 		} catch (InstantiationException e) {
 		} catch (IllegalAccessException e) {
 		}
-		db = Database.getInstance();
+		try {
+			db = Database.getInstance();
+		} catch (SQLException e1) {
+			JOptionPane.showMessageDialog(null, e1.getMessage(), "SQL Exception!", JOptionPane.OK_OPTION);
+		}
 		frmMovieDatabase = new JFrame();
 		frmMovieDatabase.setTitle("Movie Database");
-		frmMovieDatabase.setBounds(100, 100, 1132, 766);
+		frmMovieDatabase.setBounds(100, 100, 1280, 900);
 		frmMovieDatabase.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMovieDatabase.setMinimumSize(new Dimension(1280, 768));
+		frmMovieDatabase.setMinimumSize(new Dimension(1280, 900));
 
 		JScrollPane scrollPane = new JScrollPane();
-		tm = new TableModel();
+		/*
 		try {
 			File img = new File("img/" + tm.getRow(0).getPicture());
-			System.out.println(img.getAbsolutePath());
-			image = ImageIO.read(img);
+			if (img.exists())
+				image = ImageIO.read(img);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 
 		label = new JLabel();
-		
+
 		btnNewButton = new JButton("Add new");
-		
+		btnNewButton.addActionListener((e) -> new AddEdit(true, tm).showWindow());
+
 		btnEdit = new JButton("Edit");
-		
+		btnEdit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (table.getSelectedRow() != -1) {
+					new AddEdit(false, tm, tm.getRow(table.getSelectedRow())).showWindow();
+				}
+			}
+
+		});
+
 		btnDelete = new JButton("Delete");
-		
-		
+
 		btnLend = new JButton("Lend");
-		
+		btnLend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(table.getSelectedRow() != -1) {
+					Row r = tm.getRow(table.getSelectedRow());
+					if(!r.isRented()) {
+						new LendingWindow(r, tm).showWindow();
+					}
+				}
+			}
+		});
+
 		btnSearch = new JButton("Search");
-		
-		btnPnik = new JButton("P\u00C1NIK");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new SearchWindow(tm).showWindow();
+			}
+		});
+
+		btnPnik = new JButton("PANIC");
 		btnPnik.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				db.panic();
 				tm.fireTableDataChanged();
 			}
 		});
-		
+
 		btnRentals = new JButton("Rentals");
-		
-		textField = new JTextField();
-		textField.setToolTipText("Search");
-		textField.setColumns(10);
-		
-		btnDummydata = new JButton("dummydata");
-		btnDummydata.addActionListener(new ActionListener() {
+		btnRentals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				db.fillDatabaseWithDummyData();
-				tm.fireTableDataChanged();
+				new view.loans.Lister(tm).showWindow();
 			}
 		});
 
@@ -147,20 +173,22 @@ public class Lister {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1005, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1016, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(textField)
-							.addComponent(btnEdit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-							.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-							.addComponent(btnDelete, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-							.addComponent(btnLend, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-							.addComponent(btnPnik, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-							.addComponent(btnRentals, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-							.addComponent(label, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-							.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnDummydata))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(6)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnEdit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+								.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+								.addComponent(btnDelete, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+								.addComponent(btnLend, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+								.addComponent(btnRentals, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+								.addComponent(btnPnik, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGap(6)
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
+							.addGap(3)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -168,7 +196,7 @@ public class Lister {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 839, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnNewButton)
 							.addGap(22)
@@ -177,22 +205,19 @@ public class Lister {
 							.addComponent(btnDelete)
 							.addGap(27)
 							.addComponent(btnLend)
-							.addGap(35)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
+							.addGap(25)
 							.addComponent(btnSearch)
-							.addGap(48)
-							.addComponent(btnPnik)
-							.addGap(35)
+							.addGap(261)
 							.addComponent(label, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-							.addComponent(btnDummydata)
-							.addGap(13)
+							.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+							.addComponent(btnPnik)
+							.addGap(21)
 							.addComponent(btnRentals)))
 					.addContainerGap())
 		);
 
 		table = new JTable();
+		table.getTableHeader().setReorderingAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tm.fireTableDataChanged();
 		table.setModel(tm);
@@ -204,25 +229,33 @@ public class Lister {
 			public void valueChanged(ListSelectionEvent arg0) {
 				if (table.getSelectedRow() != -1) {
 					try {
-						image = ImageIO.read(new File("img/" + tm.getRow(table.getSelectedRow()).getPicture()));
+						File imgFile = new File("img/" + tm.getRow(table.getSelectedRow()).getPicture());
+						if (imgFile.exists()) {
+							image = ImageIO.read(imgFile);
 
-						label.setIcon(new ImageIcon(
-								image.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH)));
+							label.setIcon(new ImageIcon(
+									image.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH)));
+						} else {
+							label.setIcon(null);
+						}
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
+					} catch (NullPointerException e) {
+						JOptionPane.showMessageDialog(null, "An error occured when reading the file!");
 					}
 				}
 			}
-			
+
 		});
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(table.getSelectedRow() != -1) {
-					int n = JOptionPane.showConfirmDialog(null, "Would you like to delete this movie?", "Delete", JOptionPane.YES_NO_OPTION);
-					if(n == JOptionPane.YES_OPTION) {
-						if(db.deleteMovie(tm.getRow(table.getSelectedRow()).getId()) > 0) {
+				if (table.getSelectedRow() != -1) {
+					int n = JOptionPane.showConfirmDialog(null, "Would you like to delete this movie?", "Delete",
+							JOptionPane.YES_NO_OPTION);
+					if (n == JOptionPane.YES_OPTION) {
+						if (db.deleteMovie(tm.getRow(table.getSelectedRow()).getId()) > 0) {
 							JOptionPane.showMessageDialog(null, "Succesfully deleted!");
+							new File("img/" + tm.getRow(table.getSelectedRow()).getPicture()).delete();
 							updateTable();
 							label.setIcon(null);
 						} else {
@@ -237,7 +270,7 @@ public class Lister {
 
 		frmMovieDatabase.getContentPane().setLayout(groupLayout);
 	}
-	
+
 	public void updateTable() {
 		tm.fireTableDataChanged();
 	}

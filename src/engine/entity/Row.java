@@ -57,10 +57,6 @@ public class Row {
 		this.id = id;
 	}
 	
-	public int getColumnCount() {
-		return 9;
-	}
-
 	public String getTitle() {
 		return title;
 	}
