@@ -300,23 +300,6 @@ public class Database {
 		return result;
 	}
 
-	public void fillDatabaseWithDummyData() {
-		try {
-			insertIntoMovie(new Row("Lost in Space", "Toby Stephens", "Molly Parker", 2018, 60, "DVD", true, false, 10,
-					"picture.png"));
-			insertIntoMovie(new Row("Incredibles 2", "Producer John", "John Doe", 2017, 123, "CD", true, true, 10,
-					"picture.png"));
-			insertIntoMovie(new Row("Overboard", "Bob Fisher", "Anna Faris", 2018, 135, "Blu-Ray", false, false, 10,
-					"picture.png"));
-			insertIntoMovie(new Row("The Rider", "Chloe Zhao", "Brady Jandreau", 1995, 104, "DVD", true, false, 10,
-					"picture.png"));
-			insertIntoMovie(new Row("Beirut", "Brad Anderson", "Rosamund Pike", 2000, 133, "Blu-Ray", false, true, 10,
-					"picture2.png"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Closes the db connection
 	 */

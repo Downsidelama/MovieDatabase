@@ -1,0 +1,29 @@
+Row
+Ezzel az osztállyal tárolható le a Movies tábla egy-egy sora. Az értékadásnál implementálva van az adatbázisban is szereplõ megkötés (nem nulla, 255-nél rövidebb, ha varchar(255), stb...).
+
+BasicRow
+Ezzel az osztállyal tárolható le a Rented tábla egy-egy sora. Az értékadásnál implementálva van az adatbázisban is szereplõ megkötés (nem nulla, 255-nél rövidebb, ha varchar(255), stb...).
+
+Database
+Az adatbázissal való kapcsolat létrehozása és a lekérdezések futtatása itt zajlik.
+
+view.listing.Lister
+A filmek kilistázására szolgáló GUI-t megvalósító osztály.
+
+view.listing.TableModel
+A view.listing.Lister-ben levõ táblázat model-je.
+
+SearchWindow
+A filmek szûréséhez szolgáló GUI-t megvalósító osztály.
+
+LendingWindow
+A kikölcsönzésre szolgáló GUI-t megvalósító osztály.
+
+AddEdit
+A filmek hozzáadására és szerkesztésére szolgáló GUI.
+
+view.loans.Lister
+A kikölcsönzött filmek GUI-ja.
+
+view.loans.TableModel
+A view.loans.Lister táblájának modelje.
