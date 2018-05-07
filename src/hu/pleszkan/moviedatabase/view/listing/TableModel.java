@@ -1,4 +1,4 @@
-package view.listing;
+package hu.pleszkan.moviedatabase.view.listing;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.swing.table.AbstractTableModel;
 
-import engine.Database;
-import engine.entity.Row;
+import hu.pleszkan.moviedatabase.engine.Database;
+import hu.pleszkan.moviedatabase.engine.entity.Row;
 
 /**
  * <h1>Custom TableModel</h1>

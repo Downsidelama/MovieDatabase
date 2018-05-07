@@ -1,4 +1,4 @@
-package view.listing;
+package hu.pleszkan.moviedatabase.view.listing;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,8 +12,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 
-import engine.Database;
-import engine.entity.Row;
+import hu.pleszkan.moviedatabase.engine.Database;
+import hu.pleszkan.moviedatabase.engine.entity.Row;
 
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -164,7 +164,7 @@ public class Lister {
 		btnRentals = new JButton("Rentals");
 		btnRentals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new view.loans.Lister(tm).showWindow();
+				new hu.pleszkan.moviedatabase.view.loans.Lister(tm).showWindow();
 			}
 		});
 

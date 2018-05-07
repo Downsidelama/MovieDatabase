@@ -1,7 +1,6 @@
-package view.loans;
+package hu.pleszkan.moviedatabase.view.loans;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
@@ -11,11 +10,6 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import engine.Database;
-
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -23,15 +17,17 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JLabel;
+
+import hu.pleszkan.moviedatabase.engine.Database;
+
 import javax.swing.JTextField;
 
 public class Lister {
 
 	private JDialog frmLoans;
 	private JTable table;
-	private view.loans.TableModel tm;
-	private view.listing.TableModel otherTableModel;
+	private hu.pleszkan.moviedatabase.view.loans.TableModel tm;
+	private hu.pleszkan.moviedatabase.view.listing.TableModel otherTableModel;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 	private Database db;
@@ -68,7 +64,7 @@ public class Lister {
 		initialize();
 	}
 
-	public Lister(view.listing.TableModel tm) {
+	public Lister(hu.pleszkan.moviedatabase.view.listing.TableModel tm) {
 		try {
 			db = Database.getInstance();
 		} catch (SQLException e) {
@@ -90,7 +86,7 @@ public class Lister {
 		} catch (InstantiationException e) {
 		} catch (IllegalAccessException e) {
 		}
-		tm = new view.loans.TableModel();
+		tm = new hu.pleszkan.moviedatabase.view.loans.TableModel();
 		frmLoans = new JDialog();
 		frmLoans.setTitle("Loans");
 		frmLoans.setBounds(100, 100, 900, 700);

@@ -1,9 +1,7 @@
-package view.listing;
+package hu.pleszkan.moviedatabase.view.listing;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
@@ -21,7 +19,8 @@ import javax.swing.filechooser.FileFilter;
 
 import org.apache.commons.io.FilenameUtils;
 
-import engine.entity.Row;
+import hu.pleszkan.moviedatabase.engine.Database;
+import hu.pleszkan.moviedatabase.engine.entity.Row;
 
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -36,8 +35,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
-
-import engine.Database;
 
 public class AddEdit {
 

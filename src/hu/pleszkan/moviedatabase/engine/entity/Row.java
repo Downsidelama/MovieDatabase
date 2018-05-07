@@ -1,4 +1,4 @@
-package engine.entity;
+package hu.pleszkan.moviedatabase.engine.entity;
 
 /**
  * <h1>Class to hold the movie table's rows</h1>
@@ -181,5 +181,78 @@ public class Row {
 
 	public int getId() {
 		return id;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (genuinity ? 1231 : 1237);
+		result = prime * result + id;
+		result = prime * result + length;
+		result = prime * result + ((mainactor == null) ? 0 : mainactor.hashCode());
+		result = prime * result + ((media == null) ? 0 : media.hashCode());
+		result = prime * result + ((picture == null) ? 0 : picture.hashCode());
+		result = prime * result + ((producer == null) ? 0 : producer.hashCode());
+		result = prime * result + release;
+		result = prime * result + (rented ? 1231 : 1237);
+		result = prime * result + timesrented;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Row other = (Row) obj;
+		if (genuinity != other.genuinity)
+			return false;
+		if (id != other.id)
+			return false;
+		if (length != other.length)
+			return false;
+		if (mainactor == null) {
+			if (other.mainactor != null)
+				return false;
+		} else if (!mainactor.equals(other.mainactor))
+			return false;
+		if (media == null) {
+			if (other.media != null)
+				return false;
+		} else if (!media.equals(other.media))
+			return false;
+		if (picture == null) {
+			if (other.picture != null)
+				return false;
+		} else if (!picture.equals(other.picture))
+			return false;
+		if (producer == null) {
+			if (other.producer != null)
+				return false;
+		} else if (!producer.equals(other.producer))
+			return false;
+		if (release != other.release)
+			return false;
+		if (rented != other.rented)
+			return false;
+		if (timesrented != other.timesrented)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
 	}
 }

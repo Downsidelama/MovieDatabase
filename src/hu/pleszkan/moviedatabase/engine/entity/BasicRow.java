@@ -1,4 +1,4 @@
-package engine.entity;
+package hu.pleszkan.moviedatabase.engine.entity;
 
 import java.sql.Date;
 

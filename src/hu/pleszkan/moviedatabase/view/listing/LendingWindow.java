@@ -1,4 +1,4 @@
-package view.listing;
+package hu.pleszkan.moviedatabase.view.listing;
 
 import java.awt.EventQueue;
 
@@ -9,8 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import engine.Database;
-import engine.entity.Row;
+import hu.pleszkan.moviedatabase.engine.Database;
+import hu.pleszkan.moviedatabase.engine.entity.Row;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

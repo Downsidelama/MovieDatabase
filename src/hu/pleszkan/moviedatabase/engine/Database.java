@@ -1,4 +1,4 @@
-package engine;
+package hu.pleszkan.moviedatabase.engine;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,8 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import engine.entity.BasicRow;
-import engine.entity.Row;
+import hu.pleszkan.moviedatabase.engine.entity.BasicRow;
+import hu.pleszkan.moviedatabase.engine.entity.Row;
 
 /**
  * <h1>Database handler</h1> Singleton class
@@ -66,7 +66,6 @@ public class Database {
 					.prepareStatement("UPDATE rented SET movieid = ?, renter = ?, date = ?, dateover = ?");
 			deleteRow = connection.prepareStatement("DELETE FROM movies WHERE id = ?");
 			deletePirateMaterial = connection.prepareStatement("DELETE FROM movies WHERE genuinity = false");
-			// fillDatabaseWithDummyData();
 		} catch (SQLException e) {
 			throw e;
 		}
@@ -84,7 +83,6 @@ public class Database {
 		try {
 			results = deletePirateMaterial.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return results;
@@ -107,6 +105,12 @@ public class Database {
 		return results;
 	}
 
+	/**
+	 * Inserts into the rented table.
+	 * @param d
+	 * @return
+	 * @throws SQLException
+	 */
 	public int insertIntoRented(BasicRow d) throws SQLException {
 		int results = 0;
 
@@ -158,6 +162,7 @@ public class Database {
 	 * 
 	 * @param d
 	 */
+	@Deprecated
 	public void updateRentedRow(BasicRow d) {
 
 	}
@@ -182,7 +187,6 @@ public class Database {
 			updateMovieRow.setInt(9, d.getTimesrented());
 			updateMovieRow.setString(10, d.getPicture());
 			updateMovieRow.setInt(11, d.getId());
-			System.out.println(d.getId());
 
 			results = updateMovieRow.executeUpdate();
 		} catch (SQLException e) {
@@ -284,6 +288,11 @@ public class Database {
 		return true;
 	}
 	
+	/**
+	 * Gets a movie by its ID.
+	 * @param id
+	 * @return
+	 */
 	public String getMovieNameByID(int id) {
 		ResultSet rs = null;
 		String result = null;
@@ -307,11 +316,18 @@ public class Database {
 		try {
 			connection.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * Loans the movie.
+	 * @param r
+	 * @param renter
+	 * @param date
+	 * @param dateOver
+	 * @throws SQLException
+	 */
 	public void rent(Row r, String renter, Date date, Date dateOver) throws SQLException {
 		r.setRented(true);
 		r.setTimesrented(r.getTimesrented() + 1);
@@ -323,6 +339,10 @@ public class Database {
 		}
 	}
 
+	/**
+	 * Takes back the movie from the person who rented it.
+	 * @param row
+	 */
 	public void takeBack(BasicRow row) {
 		try {
 			PreparedStatement ps = connection.prepareStatement("UPDATE rented SET dateOver = ? WHERE id=?");
@@ -337,4 +357,5 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+	
 }

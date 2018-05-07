@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="thirdparty/bin/derby.jar"/>
 	<classpathentry kind="lib" path="thirdparty/bin/derbyclient.jar"/>
 	<classpathentry kind="lib" path="thirdparty/bin/derbytools.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,16 +1,13 @@
-package view.loans;
+package hu.pleszkan.moviedatabase.view.loans;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.swing.table.AbstractTableModel;
 
-import engine.Database;
-import engine.entity.BasicRow;
-import engine.entity.Row;
+import hu.pleszkan.moviedatabase.engine.Database;
+import hu.pleszkan.moviedatabase.engine.entity.BasicRow;
 
 public class TableModel extends AbstractTableModel {
 

@@ -1,13 +1,10 @@
-package view.listing;
+package hu.pleszkan.moviedatabase.view.listing;
 
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.TextField;
 
 import javax.swing.JDialog;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -29,7 +26,7 @@ public class SearchWindow {
 	private JTextField release;
 	private JTextField duration;
 	private TableModel tm;
-	private JComboBox loaned;
+	private JComboBox<String> loaned;
 
 	/**
 	 * Launch the application.
@@ -94,12 +91,12 @@ public class SearchWindow {
 		duration.setColumns(10);
 		setPlaceHolder(duration, "Duration");
 
-		JComboBox genuine = new JComboBox();
+		JComboBox<String> genuine = new JComboBox<String>();
 		genuine.addItem("Is genuine?");
 		genuine.addItem("Yes");
 		genuine.addItem("No");
 
-		JComboBox media = new JComboBox();
+		JComboBox<String> media = new JComboBox<String>();
 		media.addItem("Select media");
 		media.addItem("DVD");
 		media.addItem("VHS");
@@ -181,7 +178,7 @@ public class SearchWindow {
 			}
 		});
 		
-		loaned = new JComboBox();
+		loaned = new JComboBox<String>();
 		loaned.addItem("Loaned?");
 		loaned.addItem("Yes");
 		loaned.addItem("No");
