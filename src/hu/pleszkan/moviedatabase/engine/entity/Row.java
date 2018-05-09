@@ -23,15 +23,16 @@ public class Row {
 	/**
 	 * The constructor to set up the data.
 	 * 
-	 * @param title
-	 * @param producer
-	 * @param mainactor
-	 * @param release
-	 * @param length
-	 * @param media
-	 * @param genuinity
-	 * @param rented
-	 * @param timesrented
+	 * @param title Title
+	 * @param producer Producer
+	 * @param mainactor Main Actor
+	 * @param release Release Date
+	 * @param length Duration
+	 * @param media Media that contains the copy
+	 * @param genuinity Legal copy?
+	 * @param rented Is rented ATM?
+	 * @param timesrented Times it was rented
+	 * @param picture The picture's location
 	 * @exception IllegalArgumentException
 	 *                on Strings longer than 255
 	 */
@@ -54,6 +55,23 @@ public class Row {
 		}
 	}
 
+	/**
+	 * The constructor to set up the data.
+	 * 
+	 * @param id The id in the database
+	 * @param title Title
+	 * @param producer Producer
+	 * @param mainactor Main Actor
+	 * @param release Release Date
+	 * @param length Duration
+	 * @param media Media that contains the copy
+	 * @param genuinity Legal copy?
+	 * @param rented Is rented ATM?
+	 * @param timesrented Times it was rented
+	 * @param picture The picture's location
+	 * @exception IllegalArgumentException
+	 *                on Strings longer than 255
+	 */
 	public Row(int id, String title, String producer, String mainactor, int release, int length, String media,
 			boolean genuinity, boolean rented, int timesrented, String picture) {
 		this(title, producer, mainactor, release, length, media, genuinity, rented, timesrented, picture);

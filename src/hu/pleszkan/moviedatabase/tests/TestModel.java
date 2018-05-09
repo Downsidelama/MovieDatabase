@@ -17,6 +17,12 @@ import hu.pleszkan.moviedatabase.engine.entity.BasicRow;
 import hu.pleszkan.moviedatabase.engine.entity.Row;
 import hu.pleszkan.moviedatabase.view.listing.TableModel;
 
+/**
+ * Tests
+ * @author Tamas Pleszkan
+ * @version 1.0
+ * @since 2018-05-09
+ */
 public class TestModel {
 
 	private static Connection connection;

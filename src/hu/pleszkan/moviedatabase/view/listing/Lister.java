@@ -61,6 +61,7 @@ public class Lister {
 
 	/**
 	 * Launch the application.
+	 * @param args Args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

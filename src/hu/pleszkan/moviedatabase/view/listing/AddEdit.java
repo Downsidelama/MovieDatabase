@@ -50,6 +50,8 @@ public class AddEdit {
 
 	/**
 	 * Create the application.
+	 * @param add Adding or editing the data
+	 * @param tm The tablemodel which are in use by the table in the main window
 	 */
 	public AddEdit(boolean add, TableModel tm) {
 		this.add = add;
@@ -61,9 +63,12 @@ public class AddEdit {
 		}
 		initialize();
 	}
-
+	
 	/**
-	 * @wbp.parser.entryPoint
+	 * Constructor
+	 * @param add Adding or editing the data
+	 * @param tm The tablemodel which are in use by the table in the main window
+	 * @param row The row that you want to edit
 	 */
 	public AddEdit(boolean add, TableModel tm, Row row) {
 		this.add = add;

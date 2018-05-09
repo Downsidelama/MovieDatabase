@@ -74,7 +74,7 @@ public class Database {
 	/**
 	 * Deletes all the pirated material
 	 * 
-	 * @return
+	 * @return returns the number of rows affected
 	 */
 
 	// Still need to delete all of them from rented
@@ -91,8 +91,8 @@ public class Database {
 	/**
 	 * Deletes the the movie which has the id in the parameter
 	 * 
-	 * @param id
-	 * @return
+	 * @param id ID of the movie
+	 * @return returns the number of rows affected
 	 */
 	public int deleteMovie(int id) {
 		int results = 0;
@@ -108,9 +108,9 @@ public class Database {
 	/**
 	 * Inserts into the rented table.
 	 * 
-	 * @param d
-	 * @return
-	 * @throws SQLException
+	 * @param d BasicRow
+	 * @return returns the rows affected
+	 * @throws SQLException If something goes wrong
 	 */
 	public int insertIntoRented(BasicRow d) throws SQLException {
 		int results = 0;
@@ -132,8 +132,9 @@ public class Database {
 	/**
 	 * Inserts into Movie table
 	 * 
-	 * @param d
+	 * @param d Row
 	 * @return Returns the number of affected rows
+	 * @throws SQLException SQLexception
 	 */
 	public int insertIntoMovie(Row d) throws SQLException {
 		int results = 0;
@@ -159,19 +160,11 @@ public class Database {
 	}
 
 	/**
-	 * Updates the rented table with the given parameter
-	 * 
-	 * @param d
-	 */
-	@Deprecated
-	public void updateRentedRow(BasicRow d) {
-
-	}
-
-	/**
 	 * Updates the movie table with the given parameter
 	 * 
-	 * @param d
+	 * @param d Row
+	 * @throws SQLException SQLexception
+	 * @return Returns the affected number of rows
 	 */
 	public int updateMovieRow(Row d) throws SQLException {
 		int results = 0;
@@ -292,8 +285,8 @@ public class Database {
 	/**
 	 * Gets a movie by its ID.
 	 * 
-	 * @param id
-	 * @return
+	 * @param id ID of the movie
+	 * @return The name
 	 */
 	public String getMovieNameByID(int id) {
 		ResultSet rs = null;
@@ -325,11 +318,11 @@ public class Database {
 	/**
 	 * Loans the movie.
 	 * 
-	 * @param r
-	 * @param renter
-	 * @param date
-	 * @param dateOver
-	 * @throws SQLException
+	 * @param r Row
+	 * @param renter Renter
+	 * @param date Date
+	 * @param dateOver DateOver
+	 * @throws SQLException Exception
 	 */
 	public void rent(Row r, String renter, Date date, Date dateOver) throws SQLException {
 		r.setRented(true);
@@ -345,7 +338,7 @@ public class Database {
 	/**
 	 * Takes back the movie from the person who rented it.
 	 * 
-	 * @param row
+	 * @param row Row
 	 */
 	public void takeBack(BasicRow row) {
 		try {

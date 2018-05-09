@@ -46,6 +46,7 @@ public class SearchWindow {
 
 	/**
 	 * Create the application.
+	 * @param tm Tablemodel
 	 */
 	public SearchWindow(TableModel tm) {
 		this.tm = tm;
