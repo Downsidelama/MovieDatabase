@@ -47,7 +47,7 @@ public class AddEdit {
 	private static Database db;
 	private TableModel tm;
 	private Row row;
-	
+
 	/**
 	 * Create the application.
 	 */
@@ -268,83 +268,67 @@ public class AddEdit {
 			}
 		}
 		GroupLayout groupLayout = new GroupLayout(frmAddedit.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addContainerGap()
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(releaseDate, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
 						.addComponent(title, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
 						.addComponent(director, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
 						.addComponent(mainActors, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-						.addComponent(durationSpinner, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+						.addComponent(durationSpinner, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 414,
+								Short.MAX_VALUE)
 						.addComponent(mediaComboBox, Alignment.TRAILING, 0, 414, Short.MAX_VALUE)
 						.addComponent(genuineComboBox, Alignment.TRAILING, 0, 414, Short.MAX_VALUE)
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addComponent(btnSave, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-							.addComponent(btnCancel, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(imagePathTextField, GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-									.addGap(18))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblGenuine, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-									.addGap(207)))
-							.addComponent(browseButton, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblCoverImageLocation)
-						.addComponent(lblMedia)
-						.addComponent(lblDuration)
-						.addComponent(lblReleaseDate)
-						.addComponent(lblNewLabel)
-						.addComponent(lblDirector)
+								.addComponent(btnSave, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+								.addComponent(btnCancel, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.TRAILING,
+								groupLayout.createSequentialGroup()
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addGroup(groupLayout.createSequentialGroup()
+														.addComponent(imagePathTextField, GroupLayout.DEFAULT_SIZE, 289,
+																Short.MAX_VALUE)
+														.addGap(18))
+												.addGroup(groupLayout.createSequentialGroup()
+														.addComponent(lblGenuine, GroupLayout.PREFERRED_SIZE, 100,
+																GroupLayout.PREFERRED_SIZE)
+														.addGap(207)))
+										.addComponent(browseButton, GroupLayout.PREFERRED_SIZE, 107,
+												GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblCoverImageLocation).addComponent(lblMedia).addComponent(lblDuration)
+						.addComponent(lblReleaseDate).addComponent(lblNewLabel).addComponent(lblDirector)
 						.addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(18)
-					.addComponent(lblTitle)
-					.addGap(18)
-					.addComponent(title, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblDirector)
-					.addGap(18)
-					.addComponent(director, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblNewLabel)
-					.addGap(18)
-					.addComponent(mainActors, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblReleaseDate)
-					.addGap(18)
-					.addComponent(releaseDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblDuration)
-					.addGap(18)
-					.addComponent(durationSpinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblMedia)
-					.addGap(18)
-					.addComponent(mediaComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblCoverImageLocation)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(imagePathTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addGap(18).addComponent(lblTitle).addGap(18)
+				.addComponent(title, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addGap(18).addComponent(lblDirector).addGap(18)
+				.addComponent(director, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addGap(18).addComponent(lblNewLabel).addGap(18)
+				.addComponent(mainActors, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addGap(18).addComponent(lblReleaseDate).addGap(18)
+				.addComponent(releaseDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addGap(18).addComponent(lblDuration).addGap(18)
+				.addComponent(durationSpinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addGap(18).addComponent(lblMedia).addGap(18)
+				.addComponent(mediaComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addGap(18).addComponent(lblCoverImageLocation).addGap(18)
+				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(imagePathTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
 						.addComponent(browseButton))
-					.addGap(18)
-					.addComponent(lblGenuine)
-					.addGap(18)
-					.addComponent(genuineComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnSave)
-						.addComponent(btnCancel))
-					.addContainerGap())
-		);
+				.addGap(18).addComponent(lblGenuine).addGap(18)
+				.addComponent(genuineComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED, 55, Short.MAX_VALUE).addGroup(groupLayout
+						.createParallelGroup(Alignment.BASELINE).addComponent(btnSave).addComponent(btnCancel))
+				.addContainerGap()));
 		frmAddedit.getContentPane().setLayout(groupLayout);
 	}
 

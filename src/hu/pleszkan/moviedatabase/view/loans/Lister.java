@@ -38,18 +38,11 @@ public class Lister {
 	 * Launch the application.
 	 */
 	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Lister window = new Lister();
-					window.frmLoans.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { Lister window = new Lister();
+	 * window.frmLoans.setVisible(true); } catch (Exception e) {
+	 * e.printStackTrace(); } } }); }
+	 */
 
 	/**
 	 * Create the application.
@@ -116,15 +109,15 @@ public class Lister {
 				}
 			}
 		});
-		
+
 		JCheckBox chckbxOnLoan = new JCheckBox("Show all");
 		chckbxOnLoan.setSelected(true);
-		
+
 		chckbxOnLoan.addActionListener((t) -> tm.setShowAll(chckbxOnLoan.isSelected()));
-		
+
 		searchTextField = new JTextField();
 		searchTextField.setColumns(10);
-		
+
 		btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -132,38 +125,29 @@ public class Lister {
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frmLoans.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(10)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
-					.addGap(29)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addGap(10)
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE).addGap(29)
+				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 						.addComponent(btnSearch, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(searchTextField)
-						.addComponent(chckbxOnLoan, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(chckbxOnLoan, Alignment.LEADING, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnNewButton_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
 						.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
-					.addContainerGap())
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+				.addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addGap(11)
+				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnNewButton_1)
-							.addGap(41)
-							.addComponent(chckbxOnLoan)
-							.addGap(41)
-							.addComponent(searchTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(22)
-							.addComponent(btnSearch)
-							.addPreferredGap(ComponentPlacement.RELATED, 423, Short.MAX_VALUE)
-							.addComponent(btnNewButton)))
-					.addGap(11))
-		);
+						.addGroup(groupLayout.createSequentialGroup().addComponent(btnNewButton_1).addGap(41)
+								.addComponent(chckbxOnLoan).addGap(41)
+								.addComponent(searchTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
+								.addGap(22).addComponent(btnSearch)
+								.addPreferredGap(ComponentPlacement.RELATED, 423, Short.MAX_VALUE)
+								.addComponent(btnNewButton)))
+				.addGap(11)));
 
 		table = new JTable();
 		scrollPane.setViewportView(table);

@@ -107,6 +107,7 @@ public class Database {
 
 	/**
 	 * Inserts into the rented table.
+	 * 
 	 * @param d
 	 * @return
 	 * @throws SQLException
@@ -287,9 +288,10 @@ public class Database {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Gets a movie by its ID.
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -300,7 +302,7 @@ public class Database {
 			PreparedStatement ps = connection.prepareStatement("SELECT title FROM movies WHERE id=?");
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				result = rs.getString("title");
 			}
 		} catch (SQLException e) {
@@ -322,6 +324,7 @@ public class Database {
 
 	/**
 	 * Loans the movie.
+	 * 
 	 * @param r
 	 * @param renter
 	 * @param date
@@ -341,6 +344,7 @@ public class Database {
 
 	/**
 	 * Takes back the movie from the person who rented it.
+	 * 
 	 * @param row
 	 */
 	public void takeBack(BasicRow row) {
@@ -349,7 +353,7 @@ public class Database {
 			ps.setDate(1, new Date(System.currentTimeMillis()));
 			ps.setInt(2, row.getId());
 			ps.executeUpdate();
-			
+
 			ps = connection.prepareStatement("UPDATE movies SET rented = false WHERE id=?");
 			ps.setInt(1, row.getMovieid());
 			ps.executeUpdate();
@@ -357,5 +361,5 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

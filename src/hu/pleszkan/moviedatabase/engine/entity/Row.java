@@ -2,6 +2,7 @@ package hu.pleszkan.moviedatabase.engine.entity;
 
 /**
  * <h1>Class to hold the movie table's rows</h1>
+ * 
  * @author Tamas Pleszkan
  * @version 1.0
  * @since 2018-04-14
@@ -21,6 +22,7 @@ public class Row {
 
 	/**
 	 * The constructor to set up the data.
+	 * 
 	 * @param title
 	 * @param producer
 	 * @param mainactor
@@ -30,7 +32,8 @@ public class Row {
 	 * @param genuinity
 	 * @param rented
 	 * @param timesrented
-	 * @exception IllegalArgumentException on Strings longer than 255
+	 * @exception IllegalArgumentException
+	 *                on Strings longer than 255
 	 */
 	public Row(String title, String producer, String mainactor, int release, int length, String media,
 			boolean genuinity, boolean rented, int timesrented, String picture) {
@@ -50,13 +53,13 @@ public class Row {
 			throw new IllegalArgumentException();
 		}
 	}
-	
+
 	public Row(int id, String title, String producer, String mainactor, int release, int length, String media,
 			boolean genuinity, boolean rented, int timesrented, String picture) {
 		this(title, producer, mainactor, release, length, media, genuinity, rented, timesrented, picture);
 		this.id = id;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -146,7 +149,7 @@ public class Row {
 	}
 
 	public Object column(int arg1) {
-		switch(arg1) {
+		switch (arg1) {
 		case 1:
 			return getTitle();
 		case 2:
@@ -183,7 +186,9 @@ public class Row {
 		return id;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -204,7 +209,9 @@ public class Row {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override

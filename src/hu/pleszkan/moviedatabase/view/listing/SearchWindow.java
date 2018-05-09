@@ -32,18 +32,11 @@ public class SearchWindow {
 	 * Launch the application.
 	 */
 	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SearchWindow window = new SearchWindow(null);
-					window.frmSearch.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { SearchWindow window = new
+	 * SearchWindow(null); window.frmSearch.setVisible(true); } catch (Exception e)
+	 * { e.printStackTrace(); } } }); }
+	 */
 
 	/**
 	 * Create the application.
@@ -155,12 +148,12 @@ public class SearchWindow {
 				} else {
 					tm.setMedia(null);
 				}
-				if(loaned.getSelectedIndex() != 0) {
+				if (loaned.getSelectedIndex() != 0) {
 					tm.setFilterRented(true);
-					if(loaned.getSelectedIndex() == 1) {
+					if (loaned.getSelectedIndex() == 1) {
 						tm.setLoaned(true);
 					}
-					if(loaned.getSelectedIndex() == 2) {
+					if (loaned.getSelectedIndex() == 2) {
 						tm.setLoaned(false);
 					}
 				} else {
@@ -177,62 +170,55 @@ public class SearchWindow {
 				frmSearch.dispose();
 			}
 		});
-		
+
 		loaned = new JComboBox<String>();
 		loaned.addItem("Loaned?");
 		loaned.addItem("Yes");
 		loaned.addItem("No");
-		
+
 		GroupLayout groupLayout = new GroupLayout(frmSearch.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-									.addComponent(duration, Alignment.LEADING)
-									.addComponent(release, Alignment.LEADING)
-									.addComponent(mainActor, Alignment.LEADING)
-									.addComponent(director, Alignment.LEADING)
-									.addComponent(title, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addContainerGap()
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+						.createSequentialGroup()
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+								.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(duration, Alignment.LEADING).addComponent(release, Alignment.LEADING)
+								.addComponent(mainActor, Alignment.LEADING).addComponent(director, Alignment.LEADING)
+								.addComponent(title, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-									.addComponent(media, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(genuine, 0, 281, Short.MAX_VALUE)
-									.addComponent(loaned, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+										.addComponent(media, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(genuine, 0, 281, Short.MAX_VALUE)
+										.addComponent(loaned, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(cancelButton, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-							.addGap(12))))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(title, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(director, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(mainActor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(release, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(duration, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(genuine, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(media, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(loaned, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(searchButton)
-						.addComponent(cancelButton))
-					.addContainerGap())
-		);
+								.addComponent(searchButton, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(cancelButton, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+								.addGap(12)))));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addContainerGap()
+				.addComponent(title, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
+				.addComponent(director, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
+				.addComponent(mainActor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
+				.addComponent(release, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
+				.addComponent(duration, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+						GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
+				.addComponent(genuine, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
+				.addComponent(media, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
+				.addComponent(loaned, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED, 36, Short.MAX_VALUE).addGroup(groupLayout
+						.createParallelGroup(Alignment.BASELINE).addComponent(searchButton).addComponent(cancelButton))
+				.addContainerGap()));
 		frmSearch.getContentPane().setLayout(groupLayout);
 	}
 

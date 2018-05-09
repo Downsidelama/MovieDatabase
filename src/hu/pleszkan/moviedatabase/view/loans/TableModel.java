@@ -15,9 +15,12 @@ public class TableModel extends AbstractTableModel {
 	private String[] columnNames = { "Movie Name", "Renter", "Date Rented", "Date Returned" };
 	private Database db;
 	private ArrayList<BasicRow> data;
-	private boolean searchMode;
 	private boolean showDone;
 	private String itemToSearch;
+
+	public ArrayList<BasicRow> getData() {
+		return data;
+	}
 
 	public TableModel() {
 		super();
@@ -26,7 +29,6 @@ public class TableModel extends AbstractTableModel {
 		} catch (SQLException e) {
 		}
 		data = db.getAllRents();
-		searchMode = false;
 		showDone = true;
 		itemToSearch = "";
 	}
@@ -77,10 +79,12 @@ public class TableModel extends AbstractTableModel {
 	public void filter() {
 		data = db.getAllRents();
 		if (itemToSearch != null && !itemToSearch.equals("")) {
-			this.data = this.data.stream().filter(t -> t.getRenter().contains(itemToSearch)).collect(Collectors.toCollection(ArrayList::new));
+			this.data = this.data.stream().filter(t -> t.getRenter().contains(itemToSearch))
+					.collect(Collectors.toCollection(ArrayList::new));
 		}
 		if (!showDone) {
-			this.data = this.data.stream().filter(t -> t.getDateOver() == null).collect(Collectors.toCollection(ArrayList::new));
+			this.data = this.data.stream().filter(t -> t.getDateOver() == null)
+					.collect(Collectors.toCollection(ArrayList::new));
 		}
 	}
 

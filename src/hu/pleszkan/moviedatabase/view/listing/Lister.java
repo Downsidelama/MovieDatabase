@@ -107,13 +107,10 @@ public class Lister {
 
 		JScrollPane scrollPane = new JScrollPane();
 		/*
-		try {
-			File img = new File("img/" + tm.getRow(0).getPicture());
-			if (img.exists())
-				image = ImageIO.read(img);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
+		 * try { File img = new File("img/" + tm.getRow(0).getPicture()); if
+		 * (img.exists()) image = ImageIO.read(img); } catch (IOException e) {
+		 * e.printStackTrace(); }
+		 */
 
 		label = new JLabel();
 
@@ -137,9 +134,9 @@ public class Lister {
 		btnLend = new JButton("Lend");
 		btnLend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(table.getSelectedRow() != -1) {
+				if (table.getSelectedRow() != -1) {
 					Row r = tm.getRow(table.getSelectedRow());
-					if(!r.isRented()) {
+					if (!r.isRented()) {
 						new LendingWindow(r, tm).showWindow();
 					}
 				}
@@ -169,52 +166,36 @@ public class Lister {
 		});
 
 		GroupLayout groupLayout = new GroupLayout(frmMovieDatabase.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1016, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(6)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnEdit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-								.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-								.addComponent(btnDelete, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-								.addComponent(btnLend, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-								.addComponent(btnRentals, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-								.addComponent(btnPnik, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addGap(6)
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
-							.addGap(3)))
-					.addContainerGap())
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+				.createSequentialGroup().addContainerGap()
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1016, Short.MAX_VALUE)
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup().addGap(6)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(btnEdit, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+										.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+										.addComponent(btnDelete, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+										.addComponent(btnLend, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+										.addComponent(btnRentals, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+										.addComponent(btnPnik, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 232,
+												GroupLayout.PREFERRED_SIZE)))
+						.addGroup(Alignment.TRAILING,
+								groupLayout.createSequentialGroup().addGap(6).addComponent(label,
+										GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE).addGap(3)))
+				.addContainerGap()));
+		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.TRAILING).addGroup(groupLayout
+				.createSequentialGroup().addContainerGap()
+				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 839, Short.MAX_VALUE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnNewButton)
-							.addGap(22)
-							.addComponent(btnEdit)
-							.addGap(25)
-							.addComponent(btnDelete)
-							.addGap(27)
-							.addComponent(btnLend)
-							.addGap(25)
-							.addComponent(btnSearch)
-							.addGap(261)
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-							.addComponent(btnPnik)
-							.addGap(21)
-							.addComponent(btnRentals)))
-					.addContainerGap())
-		);
+						.addGroup(groupLayout.createSequentialGroup().addComponent(btnNewButton).addGap(22)
+								.addComponent(btnEdit).addGap(25).addComponent(btnDelete).addGap(27)
+								.addComponent(btnLend).addGap(25).addComponent(btnSearch).addGap(261)
+								.addComponent(label, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE).addComponent(btnPnik)
+								.addGap(21).addComponent(btnRentals)))
+				.addContainerGap()));
 
 		table = new JTable();
 		table.getTableHeader().setReorderingAllowed(false);
