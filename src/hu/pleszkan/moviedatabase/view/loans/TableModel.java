@@ -9,6 +9,13 @@ import javax.swing.table.AbstractTableModel;
 import hu.pleszkan.moviedatabase.engine.Database;
 import hu.pleszkan.moviedatabase.engine.entity.BasicRow;
 
+/**
+ * Custom table model
+ * @author Tamas Pleszkan
+ * @version 1.0
+ * @since 2018-04-14
+ *
+ */
 public class TableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = 457624443870320913L;

@@ -17,6 +17,12 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The movie searching window
+ * @author Tamas Pleszkan
+ * @version 1.0
+ * @since 2018-04-14
+ */
 public class SearchWindow {
 
 	private JDialog frmSearch;

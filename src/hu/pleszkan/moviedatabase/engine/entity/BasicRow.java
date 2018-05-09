@@ -2,6 +2,12 @@ package hu.pleszkan.moviedatabase.engine.entity;
 
 import java.sql.Date;
 
+/**
+ * Class to store the lent item's data
+ * @author Tamas Pleszkan
+ * @since 2018-04-14
+ * @version 1.0
+ */
 public class BasicRow {
 	private int id;
 	private int movieid;

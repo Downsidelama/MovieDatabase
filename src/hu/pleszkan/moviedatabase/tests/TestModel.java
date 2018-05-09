@@ -205,6 +205,10 @@ public class TestModel {
 		}
 	}
 
+	
+	/**
+	 * Tests the movie lending feature.
+	 */
 	@Test
 	public void testMovieLending() {
 		try {
@@ -231,6 +235,9 @@ public class TestModel {
 		}
 	}
 
+	/**
+	 * Tests the movie filtering feature.
+	 */
 	@Test
 	public void testMovieFiltering() {
 		TableModel tm = new TableModel();
@@ -240,6 +247,9 @@ public class TestModel {
 		assertNotEquals(tm.getData(), data);
 	}
 
+	/**
+	 * Tests the loan listing feature.
+	 */
 	@Test
 	public void testLoanListing() {
 		try {
@@ -265,6 +275,9 @@ public class TestModel {
 		}
 	}
 
+	/**
+	 * Tests taking back loaned items feature.
+	 */
 	@Test
 	public void testTakingBackLoanedMovies() {
 		try {
@@ -289,6 +302,9 @@ public class TestModel {
 		}
 	}
 
+	/**
+	 * Tests the lean filtering feature.
+	 */
 	@Test
 	public void testLoanFiltering() {
 		hu.pleszkan.moviedatabase.view.loans.TableModel tm = new hu.pleszkan.moviedatabase.view.loans.TableModel();

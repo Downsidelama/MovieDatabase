@@ -22,6 +22,14 @@ import hu.pleszkan.moviedatabase.engine.Database;
 
 import javax.swing.JTextField;
 
+
+/**
+ * Frame to list the loans
+ * @author Tamas Pleszkan
+ * @version 1.0
+ * @since 2018-04-14
+ *
+ */
 public class Lister {
 
 	private JDialog frmLoans;

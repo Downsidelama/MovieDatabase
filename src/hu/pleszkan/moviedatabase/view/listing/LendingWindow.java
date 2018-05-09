@@ -23,6 +23,12 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
+/**
+ * The lending items window
+ * @author Tamas Pleszkan
+ * @version 1.0
+ * @since 2018-04-14
+ */
 public class LendingWindow {
 
 	private JDialog frmLendingAMovie;
