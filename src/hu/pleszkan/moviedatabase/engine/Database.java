@@ -1,5 +1,7 @@
 package hu.pleszkan.moviedatabase.engine;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -7,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import hu.pleszkan.moviedatabase.engine.entity.BasicRow;
 import hu.pleszkan.moviedatabase.engine.entity.Row;
@@ -53,7 +56,9 @@ public class Database {
 	private Database() throws SQLException {
 		try {
 			connection = DriverManager.getConnection(DBNAME);
+			dropTables();
 			createTablesIfNotExists(connection);
+			setupScript();
 			selectAllMovie = connection.prepareStatement("SELECT * FROM movies");
 			selectAllRentedMovies = connection.prepareStatement("SELECT * FROM rented");
 			insertNewMovie = connection.prepareStatement("INSERT INTO movies (title, producer,"
@@ -69,6 +74,17 @@ public class Database {
 		} catch (SQLException e) {
 			throw e;
 		}
+	}
+
+	private void dropTables() {
+		try {
+			connection.prepareStatement("DROP TABLE MOVIES").executeUpdate();
+			connection.prepareStatement("DROP TABLE RENTED").executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -351,6 +367,19 @@ public class Database {
 			ps.setInt(1, row.getMovieid());
 			ps.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void setupScript() {
+		File sql = new File("sql.sql");
+		try {
+			Scanner scanner = new Scanner(sql);
+			while(scanner.hasNextLine()) {
+				PreparedStatement ps = connection.prepareStatement(scanner.nextLine());
+				ps.executeUpdate();
+			}
+		} catch (FileNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
